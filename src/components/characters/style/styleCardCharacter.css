@@ -1,0 +1,128 @@
+.card-character{
+    width: min(90%, 300px);
+    /* height: 400px; */
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    background-color: rgba(23, 24, 28, 0.8);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.container-img-card{
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.card-img{
+    width: 100%;
+    border-radius: 3px;
+    filter: drop-shadow(1px 1px 2px #787877);
+}
+
+.container-status-character{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    top: 3px;
+    left: 3px;
+    gap: 3px;
+    
+    background-color: rgba(33, 28, 27, 0.8);
+    color: #eaebedc9;
+    border-radius: 5px;
+}
+
+.container-status-character b {
+    font-size: 0.9em;
+}
+
+.circle-status{
+    margin-top: 2px;
+    width: 12px;
+    height: 12px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+}
+
+.description-character-container{
+    border-top: 1px solid rgba(234, 235, 237, 0.5);
+}
+
+.description-title b {
+    color: #F36B59;
+}
+
+.description-title{
+    color: #eaebedc9;
+    font-size: 1em;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.description-character-items{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.character-items-description b {
+    color: #F36B59;
+    letter-spacing: 1px;
+}
+
+.character-items-description{
+    font-size: 1em;
+    color: #eaebedc9;
+}
+
+@media screen and (min-width: 320px){
+
+    .card-character{
+        height: 500px;
+    }
+
+    .description-title{
+        font-size: 1.2em;
+    }
+    
+    .character-items-description{
+        font-size: 1.2em;
+    }
+}
+
+@media screen and (min-width: 560px){
+
+    .card-img{
+        width: 100%;
+        border-radius: 3px;
+        filter: drop-shadow(1px 1px 2px #787877);
+    }
+
+    .container-status-character{
+        padding: 10px;
+    }
+    
+    .container-status-character b {
+        font-size: 1em;
+    }
+    
+    .circle-status{
+        width: 15px;
+        height: 15px;
+    }
+
+    .description-title{
+        font-size: 1.5em;
+    }
+    
+    .character-items-description{
+        font-size: 1.5em;
+    }
+}

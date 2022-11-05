@@ -1,0 +1,133 @@
+.container-form{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-btn-filter{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #79FFF1;
+}
+
+.icon-filter{
+    font-size: 1.5em;
+    color: #79FFF1;
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.icon-filter:hover{
+    transform: scale(1.1);
+    transition: 300ms;
+}
+
+.form{
+    width: 90%;
+    margin: 10px 0;
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #17181cd5;
+    border-radius: 5px;
+
+    display: none;
+    transition: 300ms;
+}
+
+.open-form{
+    display: initial;
+    transition: 300ms;
+}
+
+.form-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.form, .form-item:nth-child(2){
+    margin-top: 10px;
+}
+
+.form-label{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-label span {
+    color: #79FFF1;
+    letter-spacing: 1px;
+}
+
+.form-input{
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    padding: 5px;
+    background-color: #ebf2ff;
+    color: #17181C;
+}
+
+.form-item-btn {
+    width: 30%;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: #ebf2ff;
+    color: #17181C;
+    transition: 300ms;
+}
+
+.form-item-btn:hover {
+    background-color: #79FFF1;
+    box-shadow: 1px 1px 10px #EAEBED;
+    transition: 300ms;
+}
+
+.nameList-ubicaciones{
+    padding-inline: 3px;
+    color: #EAEBED;
+    cursor: pointer;
+}
+
+.nameList-ubicaciones:hover{
+    background-color: #ebf2ff3a;
+}
+
+
+@media screen and (min-width: 560px){
+    .form{
+        width: 50%;
+    }
+
+    .form-btn-filter span{
+        font-size: 1.5em;
+    }
+
+    .icon-filter{
+        font-size: 2em;
+    }
+
+    .form-label{
+        align-items: center;
+    }
+
+    .form-input{
+        width: 60%;
+    }
+
+    .form-item-btn {
+        width: 20%;
+    }
+}
