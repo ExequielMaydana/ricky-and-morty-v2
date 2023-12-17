@@ -3,7 +3,11 @@ import InputSearchCharacter from "./InputSearchCharacter";
 import InputSearchLocation from "./InputSearchLocation";
 import "./style/styleForm.css";
 
-const SearchByIdOrByName = ({ setNameLocations, setNameCharacterInput }) => {
+const SearchByIdOrByName = ({
+  setNameLocations,
+  nameLocations,
+  setNameCharacterInput,
+}) => {
   const openForm = useRef();
 
   const clickOpenForm = () => {
@@ -12,14 +16,16 @@ const SearchByIdOrByName = ({ setNameLocations, setNameCharacterInput }) => {
 
   return (
     <section className="container-form">
-      {/* Con este btn muestro/oculto los inputs */}
       <div className="form-btn-filter">
-        <span>Filter</span>
+        <span>Filtros</span>
         <i className="bx bx-filter-alt icon-filter" onClick={clickOpenForm}></i>
       </div>
 
       <article className="form" ref={openForm}>
-        <InputSearchLocation setNameLocations={setNameLocations} />
+        <InputSearchLocation
+          setNameLocations={setNameLocations}
+          nameLocations={nameLocations}
+        />
 
         <InputSearchCharacter setNameCharacterInput={setNameCharacterInput} />
       </article>

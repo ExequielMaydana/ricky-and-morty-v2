@@ -12,9 +12,9 @@ const getLocation = () => {
   const [idLocation, setIdLocation] = useState(randomLocation);
 
   //? aqui viene el nombre que introduzco en el input de buscar por nombre
-  const [nameLocations, setNameLocations] = useState('');
+  const [nameLocations, setNameLocations] = useState("");
 
-    //? renderizar una ubicacion por ID
+  //? renderizar una ubicacion por ID
   const getLocationById = () => {
     if (idLocation >= 1 && idLocation <= 126) {
       const URL = `https://rickandmortyapi.com/api/location/${idLocation}`;
@@ -27,23 +27,24 @@ const getLocation = () => {
 
   //? renderizar una ubicacion por name
   const getLocationByName = () => {
-    const URL = `https://rickandmortyapi.com/api/location/?name=${nameLocations}`
-    axios.get(URL)
-    .then(res => setLocation(res.data.results[0]))
-    .catch(err => console.log(err))
-  }
+    const URL = `https://rickandmortyapi.com/api/location/?name=${nameLocations}`;
+    axios
+      .get(URL)
+      .then((res) => setLocation(res.data.results[0]))
+      .catch((err) => console.log(err));
+  };
 
   useEffect(() => {
-    if(nameLocations?.length > 0){
-        getLocationByName()
+    if (nameLocations?.length > 0) {
+      getLocationByName();
     }
-  }, [nameLocations])
+  }, [nameLocations]);
 
   useEffect(() => {
-    getLocationById()
+    getLocationById();
   }, [idLocation]);
 
-  return { location, setNameLocations };
+  return { location, setNameLocations, nameLocations };
 };
 
 export default getLocation;

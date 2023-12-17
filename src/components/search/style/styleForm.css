@@ -1,133 +1,167 @@
-.container-form{
-    margin-top: 10px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+.container-form {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-.form-btn-filter{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #79FFF1;
+.form-btn-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  color: #79fff1;
+  background-color: #17181c;
+  padding: 0.5em;
+  border-radius: 8px;
 }
 
-.icon-filter{
-    font-size: 1.5em;
-    color: #79FFF1;
-    cursor: pointer;
-    transition: 300ms;
+.icon-filter {
+  font-size: 1.3em;
+  color: #79fff1;
+  cursor: pointer;
+  transition: 300ms;
 }
 
-.icon-filter:hover{
-    transform: scale(1.1);
-    transition: 300ms;
+.icon-filter:hover {
+  transform: scale(1.1);
+  transition: 300ms;
 }
 
-.form{
-    width: 90%;
-    margin: 10px 0;
-    padding: 20px;
+.form {
+  width: min(90%, 600px);
+  margin: 10px 0;
+  padding: 20px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    background-color: #17181cd5;
-    border-radius: 5px;
+  background-color: #17181cd5;
+  border-radius: 5px;
 
-    display: none;
-    transition: 300ms;
+  display: none;
+  transition: 300ms;
 }
 
-.open-form{
-    display: initial;
-    transition: 300ms;
+.open-form {
+  display: initial;
+  transition: 300ms;
 }
 
-.form-item{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+.form-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
-.form, .form-item:nth-child(2){
-    margin-top: 10px;
+.form,
+.form-item:nth-child(2) {
+  margin-top: 10px;
 }
 
-.form-label{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+.form-label-location {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  position: relative;
+}
+
+.form-label-location span {
+  color: #79fff1;
+  letter-spacing: 1px;
+}
+
+.btn-reset {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0.5em;
+  top: 2.5em;
+  background-color: #919191;
+  padding: 0.3em 0.6em;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+.form-label {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .form-label span {
-    color: #79FFF1;
-    letter-spacing: 1px;
+  color: #79fff1;
+  letter-spacing: 1px;
 }
 
-.form-input{
-    border: none;
-    border-radius: 3px;
-    outline: none;
-    padding: 5px;
-    background-color: #ebf2ff;
-    color: #17181C;
+.form-input {
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  padding: 1em;
+  background-color: #ebf2ff;
+  color: #17181c;
 }
 
 .form-item-btn {
-    width: 30%;
-    padding: 5px;
-    border: none;
-    cursor: pointer;
-    border-radius: 3px;
-    background-color: #ebf2ff;
-    color: #17181C;
-    transition: 300ms;
+  width: 30%;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  background-color: #ebf2ff;
+  color: #17181c;
+  transition: 300ms;
 }
 
 .form-item-btn:hover {
-    background-color: #79FFF1;
-    box-shadow: 1px 1px 10px #EAEBED;
-    transition: 300ms;
+  background-color: #79fff1;
+  box-shadow: 1px 1px 10px #eaebed;
+  transition: 300ms;
 }
 
-.nameList-ubicaciones{
-    padding-inline: 3px;
-    color: #EAEBED;
-    cursor: pointer;
+.container-listName-ubicaciones {
+  width: 100%;
+  height: 200px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.5em;
+}
+/* Estilos para el scroll en navegadores webkit (Chrome, Safari) */
+.container-listName-ubicaciones::-webkit-scrollbar {
+  width: 12px;
 }
 
-.nameList-ubicaciones:hover{
-    background-color: #ebf2ff3a;
+.container-listName-ubicaciones::-webkit-scrollbar-track {
+  background-color: #1f1f1f; /* Color de fondo del track (barra del scroll) */
 }
 
+.container-listName-ubicaciones::-webkit-scrollbar-thumb {
+  background-color: #61dafb; /* Color del thumb (barra del scroll que se arrastra) */
+  border-radius: 6px;
+  border: 3px solid #1f1f1f; /* Borde del thumb */
+}
 
-@media screen and (min-width: 560px){
-    .form{
-        width: 50%;
-    }
+.container-listName-ubicaciones::-webkit-scrollbar-thumb:hover {
+  background-color: #4fa3d1; /* Cambiar el color al pasar el ratón por encima */
+}
 
-    .form-btn-filter span{
-        font-size: 1.5em;
-    }
+.nameList-ubicaciones {
+  padding-inline: 3px;
+  color: #eaebed;
+  cursor: pointer;
+}
 
-    .icon-filter{
-        font-size: 2em;
-    }
-
-    .form-label{
-        align-items: center;
-    }
-
-    .form-input{
-        width: 60%;
-    }
-
-    .form-item-btn {
-        width: 20%;
-    }
+.nameList-ubicaciones:hover {
+  background-color: #ebf2ff3a;
 }

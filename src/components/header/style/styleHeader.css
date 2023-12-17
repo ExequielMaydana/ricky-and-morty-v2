@@ -24,12 +24,11 @@
 
 .text-date {
   color: #eaebed;
-  font-size: 0.6em;
+  font-size: 0.8em;
 }
 
 .text-date b {
   color: #61fd45;
-  font-size: 1.1em;
 }
 
 .description-container-items {
@@ -56,7 +55,7 @@
 
 .item-description b {
   color: #61fd45;
-  font-size: 0.8em;
+  font-size: 1em;
 }
 
 @media screen and (min-width: 560px) {
@@ -90,6 +89,23 @@
 
 @media screen and (min-width: 960px) {
   .card-location {
-    width: 70%;
+    width: 80%;
+    padding: 2em;
+  }
+
+  .text-title {
+    font-size: 2em;
+  }
+
+  .text-date {
+    font-size: 1.2em;
+  }
+
+  .description-container-items {
+    font-size: 1.3em;
+  }
+
+  .item-description b {
+    text-transform: uppercase;
   }
 }

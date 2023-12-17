@@ -9,95 +9,104 @@ import SearchByIdOrByName from "./components/search/SearchByIdOrByName";
 import getCharacters from "./components/hooks/getCharacters";
 
 function App() {
-  const { location, setNameLocations } = getLocation();
+  const { location, setNameLocations, nameLocations } = getLocation();
 
-  const { setNameCharacterInput, character } = getCharacters();
+  const { setNameCharacterInput, urlCharacter } = getCharacters();
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const residentPerPage = 6;
+  let residentPerPage = 6;
 
-  const [arrayResidents, setArrayResidents] = useState();
-
-  useEffect(() => {
-    if (location?.residents.length < residentPerPage) {
-      // aca preguntamos: si la cantidad de residentes que tiene esa location es menor que residentPerPage, se copien dentro del array
-      setArrayResidents(location?.residents);
-    } else {
-      const lastResident = currentPage * residentPerPage;
-      setArrayResidents(
-        location?.residents.slice(lastResident - residentPerPage, lastResident)
-      );
-    }
-
-    if (character?.length < residentPerPage) {
-      setArrayResidents(character);
-    } else {
-      const lastResident = currentPage * residentPerPage;
-      setArrayResidents(
-        location?.residents.slice(lastResident - residentPerPage, lastResident)
-      );
-    }
-  }, [location, currentPage, character]);
+  const [arrayResidents, setArrayResidents] = useState([]);
 
   let arrayPages = [];
   let quantityPages = 0;
 
   useEffect(() => {
-    if (location) {
-      quantityPages = Math.ceil(location?.residents.length / residentPerPage); //cantidad de paginas maxima
-      const pagesPerBlock = 5; //cantidad de paginas por bloque
-      let currentBlock = Math.ceil(currentPage / pagesPerBlock); //bloques
+    if (location !== undefined) {
+      const totalResidents = location.residents.length;
 
-      // analiza si estamos en el ultimo bloque(true) o no (false)
-      if (currentBlock * pagesPerBlock >= quantityPages) {
-        // este if analiza si me paso de la cantidad de paginas.
-        //cuando es el ultimo bloque
-        for (
-          let i = currentBlock * pagesPerBlock - pagesPerBlock + 1;
-          i <= quantityPages;
-          i++
-        ) {
-          arrayPages.push(i);
-        }
-        //cuando no es el ultimo bloque
+      if (totalResidents <= residentPerPage) {
+        setArrayResidents(location.residents);
       } else {
-        for (
-          let i = currentBlock * pagesPerBlock - pagesPerBlock + 1;
-          i <= currentBlock * pagesPerBlock;
-          i++
-        ) {
-          arrayPages.push(i);
-        }
-      }
-    } else if (character) {
-      quantityPages = Math.ceil(character?.length / residentPerPage); //cantidad de paginas maxima
-      const pagesPerBlock = 5; //cantidad de paginas por bloque
-      let currentBlock = Math.ceil(currentPage / pagesPerBlock); //bloques
-
-      // analiza si estamos en el ultimo bloque(true) o no (false)
-      if (currentBlock * pagesPerBlock >= quantityPages) {
-        // este if analiza si me paso de la cantidad de paginas.
-        //cuando es el ultimo bloque
-        for (
-          let i = currentBlock * pagesPerBlock - pagesPerBlock + 1;
-          i <= quantityPages;
-          i++
-        ) {
-          arrayPages.push(i);
-        }
-        //cuando no es el ultimo bloque
-      } else {
-        for (
-          let i = currentBlock * pagesPerBlock - pagesPerBlock + 1;
-          i <= currentBlock * pagesPerBlock;
-          i++
-        ) {
-          arrayPages.push(i);
-        }
+        const lastResident = currentPage * residentPerPage;
+        setArrayResidents(
+          location.residents.slice(lastResident - residentPerPage, lastResident)
+        );
       }
     }
-  }, [character]);
+  }, [location, currentPage, nameLocations, residentPerPage]);
+
+  useEffect(() => {
+    if (urlCharacter.length > 0) {
+      const totalCharacters = urlCharacter.length;
+
+      if (totalCharacters <= residentPerPage) {
+        setArrayResidents(urlCharacter);
+      } else {
+        const lastResidentIndex = currentPage * residentPerPage;
+        const firstResidentIndex = lastResidentIndex - residentPerPage;
+
+        setArrayResidents(
+          urlCharacter.slice(firstResidentIndex, lastResidentIndex)
+        );
+      }
+    }
+  }, [urlCharacter]);
+
+  if (location !== undefined) {
+    quantityPages = Math.ceil(location?.residents.length / residentPerPage); //cantidad de paginas maxima
+    const pagesPerBlock = 5; //cantidad de paginas por bloque
+    let currentBlock = Math.ceil(currentPage / pagesPerBlock); //bloques
+
+    // analiza si estamos en el ultimo bloque(true) o no (false)
+    if (currentBlock * pagesPerBlock >= quantityPages) {
+      // este if analiza si me paso de la cantidad de paginas.
+      //cuando es el ultimo bloque
+      for (
+        let i = currentBlock * pagesPerBlock - pagesPerBlock + 1;
+        i <= quantityPages;
+        i++
+      ) {
+        arrayPages.push(i);
+      }
+      //cuando no es el ultimo bloque
+    } else {
+      for (
+        let i = currentBlock * pagesPerBlock - pagesPerBlock + 1;
+        i <= currentBlock * pagesPerBlock;
+        i++
+      ) {
+        arrayPages.push(i);
+      }
+    }
+  } else if (urlCharacter !== undefined) {
+    quantityPages = Math.ceil(urlCharacter?.length / residentPerPage); //cantidad de paginas maxima
+    const pagesPerBlock = 5; //cantidad de paginas por bloque
+    let currentBlock = Math.ceil(currentPage / pagesPerBlock); //bloques
+
+    // analiza si estamos en el ultimo bloque(true) o no (false)
+    if (currentBlock * pagesPerBlock >= quantityPages) {
+      // este if analiza si me paso de la cantidad de paginas.
+      //cuando es el ultimo bloque
+      for (
+        let i = currentBlock * pagesPerBlock - pagesPerBlock + 1;
+        i <= quantityPages;
+        i++
+      ) {
+        arrayPages.push(i);
+      }
+      //cuando no es el ultimo bloque
+    } else {
+      for (
+        let i = currentBlock * pagesPerBlock - pagesPerBlock + 1;
+        i <= currentBlock * pagesPerBlock;
+        i++
+      ) {
+        arrayPages.push(i);
+      }
+    }
+  }
 
   return (
     <div className="App">
@@ -109,6 +118,7 @@ function App() {
 
       <SearchByIdOrByName
         setNameLocations={setNameLocations}
+        nameLocations={nameLocations}
         setNameCharacterInput={setNameCharacterInput}
       />
 
